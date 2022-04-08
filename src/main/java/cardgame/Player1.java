@@ -10,6 +10,7 @@ public class Player1 implements PlayerStrategy{
 	List<Card> myCards;
 	Card topPileCard;
 	Card.Suit changedSuit;
+	Card outCard=null;
 	Logger logger=Logger.getLogger(Player1.class.getName());
 	public void init(int playerId, List<Integer> opponentIds) {
 		this.playerId=playerId;
@@ -48,7 +49,7 @@ public class Player1 implements PlayerStrategy{
 		return true;
 	}
 	public void receiveCard(Card drawnCard) {
-		logger.log(Level.INFO,"Player1 recieved :"+drawnCard.getRank()+" "+drawnCard.getSuit());
+		logger.log(Level.INFO,"Player1 recieved : {0}",drawnCard.getRank()+" "+drawnCard.getSuit());
 		myCards.add(drawnCard);
 	}
 	public Card playCard() {
@@ -56,7 +57,7 @@ public class Player1 implements PlayerStrategy{
 		for(int i=0;i<myCards.size();i++) {
 			if(myCards.get(i).getRank().equals(Card.Rank.EIGHT)) {
 				outCard=myCards.get(i);
-				logger.log(Level.INFO,"Player1 played: "+myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
+				logger.log(Level.INFO,"Player1 played: {0}",myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
 				myCards.remove(i);
 				
 				return outCard;
@@ -69,7 +70,7 @@ public class Player1 implements PlayerStrategy{
 		if(changedSuit==null) {
 			for(int i=0;i<myCards.size();i++) {
 				if(myCards.get(i).getSuit().equals(topPileCard.getSuit()) || myCards.get(i).getRank().equals(topPileCard.getRank())) {
-					logger.log(Level.INFO,"Player1 played: "+myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
+					logger.log(Level.INFO,"Player1 played: {0}",myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
 					outCard=myCards.get(i);
 					myCards.remove(i);
 					break;
@@ -80,7 +81,7 @@ public class Player1 implements PlayerStrategy{
 			
 			for(int i=0;i<myCards.size();i++) {
 				if(myCards.get(i).getSuit().equals(changedSuit)) {
-					logger.log(Level.INFO,"Player1 played: "+myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
+					logger.log(Level.INFO,"Player1 played: {0}",myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
 					outCard=myCards.get(i);
 					myCards.remove(i);
 					changedSuit=null;
@@ -105,7 +106,7 @@ public class Player1 implements PlayerStrategy{
 				Dsuit=myCards.get(i).getSuit();
 			}
 		}
-		logger.log(Level.INFO,"Delcare suit: "+Dsuit);
+		logger.log(Level.INFO,"Delcare suit: {0}",Dsuit);
 		return Dsuit;
 		
 	}
