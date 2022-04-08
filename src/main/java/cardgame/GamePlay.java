@@ -75,7 +75,7 @@ public class GamePlay {
 				}
 
 			}
-			if(deck.size()==0 && point1<200 && point2 <200) {
+			if(deck.isEmpty() && point1<200 && point2 <200) {
 				logger.log(Level.INFO,"Deck emptied and reshuffled");
 				deck=Card.getDeck();
 				Collections.shuffle(deck);
@@ -87,7 +87,7 @@ public class GamePlay {
 	void player1Move() {
 		for(i=0;i<4 && point2<200;i++) {
 			if(play1.shouldDrawCard(topCard, decSuit)) {
-				if(deck.size()!=0 && i<3) {
+				if(!deck.isEmpty() && i<3) {
 					play1.receiveCard(deck.get(0));	
 					deck.remove(0);
 				}
@@ -95,7 +95,7 @@ public class GamePlay {
 			else {
 				topCard=play1.playCard();
 				logger.log(Level.INFO,"TopCard : {0}",topCard.getRank()+" "+topCard.getSuit());
-				if(topCard.getRank().equals(Rank.EIGHT) && play1.myCards.size()!=0) 
+				if(topCard.getRank().equals(Rank.EIGHT) && !play1.myCards.isEmpty()) 
 					decSuit=play1.declareSuit();
 				break;
 			}
@@ -105,7 +105,7 @@ public class GamePlay {
 	void player2Move() {
 		for(i=0;i<4;i++) {
 			if(play2.shouldDrawCard(topCard, decSuit)) {
-				if(deck.size()!=0 && i<3) {
+				if(!deck.isEmpty() && i<3) {
 					play2.receiveCard(deck.get(0));		
 					deck.remove(0);			
 				}
@@ -113,7 +113,7 @@ public class GamePlay {
 			else {
 				topCard=play2.playCard();
 				logger.log(Level.INFO,"TopCard : {0}",topCard.getRank()+" "+topCard.getSuit());
-				if(topCard.getRank()==Rank.EIGHT && play2.myCards.size()!=0) 
+				if(topCard.getRank()==Rank.EIGHT && !play2.myCards.isEmpty()) 
 					decSuit=play2.declareSuit();
 				break;
 			}
