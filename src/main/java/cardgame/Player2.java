@@ -53,7 +53,7 @@ public class Player2 implements PlayerStrategy{
 		myCards.add(drawnCard);
 	}
 	public Card playCard() {
-		Card outCard=null;
+		
 		for(int i=0;i<myCards.size();i++) {
 			if(myCards.get(i).getRank().equals(Card.Rank.EIGHT)) {
 				outCard=myCards.get(i);
@@ -63,8 +63,11 @@ public class Player2 implements PlayerStrategy{
 				return outCard;
 			}
 		}
-		if(changedSuit==null) {
-			
+		return play();
+		
+	}
+	public Card play() {
+		if(changedSuit==null) {		
 			for(int i=0;i<myCards.size();i++) {
 				if(myCards.get(i).getSuit().equals(topPileCard.getSuit()) || myCards.get(i).getRank().equals(topPileCard.getRank())) {
 					logger.log(Level.INFO,"Player2 played: "+myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
@@ -83,9 +86,9 @@ public class Player2 implements PlayerStrategy{
 					break;
 				}
 			}
+			changedSuit=null;
 		}
 		return outCard;
-		
 	}
 	public Card.Suit declareSuit(){
 		Card.Suit Dsuit=myCards.get(0).getSuit();
