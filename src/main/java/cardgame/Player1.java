@@ -93,7 +93,7 @@ public class Player1 implements PlayerStrategy{
 		return outCard;
 	}
 	public Card.Suit declareSuit(){
-		Card.Suit DeclareSuit=myCards.get(0).getSuit();
+		Card.Suit declareSuit=myCards.get(0).getSuit();
 		int max=0;
 		int count=0;
 		for(int i=0;i<myCards.size();i++) {
@@ -102,13 +102,13 @@ public class Player1 implements PlayerStrategy{
 				if(myCards.get(i)==myCards.get(j))
 					count++;
 			}
-			if(count>max && DeclareSuit != topPileCard.getSuit()) {
+			if(count>max && declareSuit != topPileCard.getSuit()) {
 				max=count;
-				DeclareSuit=myCards.get(i).getSuit();
+				declareSuit=myCards.get(i).getSuit();
 			}
 		}
-		logger.log(Level.INFO,"Delcare suit: {0}",DeclareSuit);
-		return DeclareSuit;
+		logger.log(Level.INFO,"Delcare suit: {0}",declareSuit);
+		return declareSuit;
 		
 	}
 	@Override
