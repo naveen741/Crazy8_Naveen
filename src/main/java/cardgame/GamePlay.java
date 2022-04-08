@@ -52,9 +52,7 @@ public class GamePlay {
 	 * @param deck is passing for access the deck cards to play the game;
 	 * @param play1 @param play2 for access their game Strategy and their Cards 
 	 */
-		void play() {
-		GamePlay ob=new GamePlay();
-		
+	void play() {
 		while(point1<200 && point2<200) {	
 			player2Move();
 			player1Move();
@@ -62,13 +60,12 @@ public class GamePlay {
 				logger.log(Level.INFO,"Deck emptied and reshuffled");
 				deck=Card.getDeck();
 				Collections.shuffle(deck);
-				ob.start();
+				start();
 			}
 		}
-		ob.results(point1,point2);
+		results(point1,point2);
 	}
 	void player1Move() {
-		GamePlay ob=new GamePlay();
 		for(i=0;i<4 && point2<200;i++) {
 			if(play1.shouldDrawCard(topCard, decSuit)) {
 				if(deck.size()!=0 && i<3) {
@@ -90,13 +87,12 @@ public class GamePlay {
 			if(point1<200 && point2 <200) {
 				deck=Card.getDeck();
 				Collections.shuffle(deck);
-				ob.start();
+				start();
 			}
 			
 		}
 	}
 	void player2Move() {
-		GamePlay ob=new GamePlay();
 		for(i=0;i<4;i++) {
 			if(play2.shouldDrawCard(topCard, decSuit)) {
 				if(deck.size()!=0 && i<3) {
@@ -118,7 +114,7 @@ public class GamePlay {
 			if(point1<200 && point2 <200) {
 				deck=Card.getDeck();
 				Collections.shuffle(deck);
-				ob.start();
+				start();
 			}
 		}
 		
