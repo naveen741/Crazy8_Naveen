@@ -46,7 +46,7 @@ public class Player2 extends CommonStrategy implements PlayerStrategy{
 	public Card.Suit declareSuit(){
 		Card.Suit declareSuit=myCards.get(0).getSuit();
 		int max=52;
-		int count=0;
+		int count;
 		for(int i=0;i<myCards.size();i++) {
 			count=0;
 			for(int j=0;j<myCards.size();j++) {
