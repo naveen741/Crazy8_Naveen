@@ -1,10 +1,14 @@
 package cardgame;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Game {	
+	static Logger logger=Logger.getLogger(GamePlay.class.getName());
 	public static void main(String[] args) {		
 		GamePlay ob=new GamePlay();
 		ob.start();
-		System.out.println("================================================");
-		System.out.println("Game Starts");
+		logger.log(Level.INFO,"Game Starts");
 		ob.play();
 	}
 }
