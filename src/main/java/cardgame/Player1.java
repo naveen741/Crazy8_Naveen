@@ -34,10 +34,8 @@ public class Player1 implements PlayerStrategy{
 			}
 		}
 		else {
-			for(int i=0;i<myCards.size();i++) {
-				if(myCards.get(i).getSuit().equals(changedSuit)) {
-					return false;
-				}
+			for(int i=0;i<myCards.size() && (myCards.get(i).getSuit().equals(changedSuit));i++) {
+				return false;
 			}
 		}
 		return true;
