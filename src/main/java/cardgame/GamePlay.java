@@ -52,60 +52,12 @@ public class GamePlay {
 	 * @param deck is passing for access the deck cards to play the game;
 	 * @param play1 @param play2 for access their game Strategy and their Cards 
 	 */
-	void play() {
+		void play() {
 		GamePlay ob=new GamePlay();
-		int point1=0,i,point2=0;
-		Card.Suit decSuit=null;
+		
 		while(point1<200 && point2<200) {	
-			for(i=0;i<4;i++) {
-				if(play2.shouldDrawCard(topCard, decSuit)) {
-					if(deck.size()!=0 && i<3) {
-						play2.receiveCard(deck.get(0));		
-						deck.remove(0);			
-					}
-				}
-				else {
-					topCard=play2.playCard();
-					logger.log(Level.INFO,"TopCard : {0}",topCard.getRank()+" "+topCard.getSuit());
-					if(topCard.getRank()==Rank.EIGHT && play2.myCards.size()!=0) 
-						decSuit=play2.declareSuit();
-					break;
-				}
-			}
-			if(play2.myCards.size()==0){
-				logger.log(Level.INFO,"Player2 emptied");
-				point2=play1.getScore(point1);
-				if(point1<200 && point2 <200) {
-					deck=Card.getDeck();
-					Collections.shuffle(deck);
-					ob.start();
-				}
-			}
-			for(i=0;i<4 && point2<200;i++) {
-				if(play1.shouldDrawCard(topCard, decSuit)) {
-					if(deck.size()!=0 && i<3) {
-						play1.receiveCard(deck.get(0));	
-						deck.remove(0);
-					}
-				}
-				else {
-					topCard=play1.playCard();
-					logger.log(Level.INFO,"TopCard : {0}",topCard.getRank()+" "+topCard.getSuit());
-					if(topCard.getRank().equals(Rank.EIGHT) && play1.myCards.size()!=0) 
-						decSuit=play1.declareSuit();
-					break;
-				}
-			}
-			if(play1.myCards.size()==0){
-				logger.log(Level.INFO,"Player1 emptied");
-				point1=play2.getScore(point2);
-				if(point1<200 && point2 <200) {
-					deck=Card.getDeck();
-					Collections.shuffle(deck);
-					ob.start();
-				}
-				
-			}
+			player2Move();
+			player1Move();
 			if(deck.size()==0 && point1<200 && point2 <200) {
 				logger.log(Level.INFO,"Deck emptied and reshuffled");
 				deck=Card.getDeck();
@@ -114,6 +66,62 @@ public class GamePlay {
 			}
 		}
 		ob.results(point1,point2);
+	}
+	void player1Move() {
+		GamePlay ob=new GamePlay();
+		for(i=0;i<4 && point2<200;i++) {
+			if(play1.shouldDrawCard(topCard, decSuit)) {
+				if(deck.size()!=0 && i<3) {
+					play1.receiveCard(deck.get(0));	
+					deck.remove(0);
+				}
+			}
+			else {
+				topCard=play1.playCard();
+				logger.log(Level.INFO,"TopCard : {0}",topCard.getRank()+" "+topCard.getSuit());
+				if(topCard.getRank().equals(Rank.EIGHT) && play1.myCards.size()!=0) 
+					decSuit=play1.declareSuit();
+				break;
+			}
+		}
+		if(play1.myCards.size()==0){
+			logger.log(Level.INFO,"Player1 emptied");
+			point1=play2.getScore(point2);
+			if(point1<200 && point2 <200) {
+				deck=Card.getDeck();
+				Collections.shuffle(deck);
+				ob.start();
+			}
+			
+		}
+	}
+	void player2Move() {
+		GamePlay ob=new GamePlay();
+		for(i=0;i<4;i++) {
+			if(play2.shouldDrawCard(topCard, decSuit)) {
+				if(deck.size()!=0 && i<3) {
+					play2.receiveCard(deck.get(0));		
+					deck.remove(0);			
+				}
+			}
+			else {
+				topCard=play2.playCard();
+				logger.log(Level.INFO,"TopCard : {0}",topCard.getRank()+" "+topCard.getSuit());
+				if(topCard.getRank()==Rank.EIGHT && play2.myCards.size()!=0) 
+					decSuit=play2.declareSuit();
+				break;
+			}
+		}
+		if(play2.myCards.size()==0){
+			logger.log(Level.INFO,"Player2 emptied");
+			point2=play1.getScore(point1);
+			if(point1<200 && point2 <200) {
+				deck=Card.getDeck();
+				Collections.shuffle(deck);
+				ob.start();
+			}
+		}
+		
 	}
 	/**
 	 * results function for show the results in console
