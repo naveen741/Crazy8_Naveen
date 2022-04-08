@@ -93,29 +93,24 @@ public class Player1 implements PlayerStrategy{
 		return outCard;
 	}
 	public Card.Suit declareSuit(){
-		Card.Suit Dsuit=myCards.get(0).getSuit();
-		int max=0,count=0;
+		Card.Suit DeclareSuit=myCards.get(0).getSuit();
+		int max=0;
+		int count=0;
 		for(int i=0;i<myCards.size();i++) {
 			count=0;
 			for(int j=0;j<myCards.size();j++) {
 				if(myCards.get(i)==myCards.get(j))
 					count++;
 			}
-			if(count>max && Dsuit != topPileCard.getSuit()) {
+			if(count>max && DeclareSuit != topPileCard.getSuit()) {
 				max=count;
-				Dsuit=myCards.get(i).getSuit();
+				DeclareSuit=myCards.get(i).getSuit();
 			}
 		}
-		logger.log(Level.INFO,"Delcare suit: {0}",Dsuit);
-		return Dsuit;
+		logger.log(Level.INFO,"Delcare suit: {0}",DeclareSuit);
+		return DeclareSuit;
 		
 	}
-	public void processOpponentActions(List<PlayerTurn> opponentActions) {
-		
-	}
-	 public void reset() {
-		 
-	 }
 	@Override
 	 public int getScore(int point) {
 		for(int i=0;i<myCards.size();i++) {
