@@ -26,7 +26,7 @@ public interface PlayerStrategy {
      * @param playerId    The id for this player, assigned by the game engine
      * @param opponentIds A list of ids for this player's opponents
      */
-    void init(int playerId, List<Integer> opponentIds);
+    //void init(int playerId, List<Integer> opponentIds);
 
     /**
      * Called once at the beginning of o game to deal the player their initial cards.
