@@ -32,26 +32,18 @@ public class GamePlay {
 			deck.remove(0);			
 		}
 		String temp="";
-//		System.out.println("================================================");
-//		System.out.println("Player1 Cards : ");
 		for(i=0;i<player1.size();i++)
 			temp+=(i+1)+" "+player1.get(i).getRank()+" "+player1.get(i).getSuit()+" ";
-//			System.out.print((i+1)+" "+player1.get(i).getRank()+" "+player1.get(i).getSuit()+" ");
 		logger.log(Level.INFO,"Player1 Cards : "+temp);
 		temp="";
-//		System.out.println("\n================================================");
-//		System.out.println("Player2 Cards : ");
 		for(i=0;i<player2.size();i++)
 			temp+=(i+1)+" "+player2.get(i).getRank()+" "+player2.get(i).getSuit()+" ";
-//			System.out.print((i+1)+" "+player2.get(i).getRank()+" "+player2.get(i).getSuit()+" ");
 		logger.log(Level.INFO,"Player2 Cards : "+temp);
-//		//System.out.println("\n================================================");
 		play1.receiveInitialCards(player1);
 		play2.receiveInitialCards(player2);
 		topCard=deck.get(0);
 		deck.remove(0);
 		logger.log(Level.INFO,"TopCard : "+topCard.getRank()+" "+topCard.getSuit());
-		//System.out.println("TopCard : "+topCard.getRank()+" "+topCard.getSuit());
 	}
 	/**
 	 * Play function for play the Crazy 8's and get points
@@ -66,25 +58,20 @@ public class GamePlay {
 			for(i=0;i<4;i++) {
 				if(play2.shouldDrawCard(topCard, decSuit)) {
 					if(deck.size()!=0 && i<3) {
-						//System.out.println("================================================");
 						play2.receiveCard(deck.get(0));		
 						deck.remove(0);			
 					}
 				}
 				else {
 					topCard=play2.playCard();
-//					System.out.println("================================================");
 					logger.log(Level.INFO,"TopCard : "+topCard.getRank()+" "+topCard.getSuit());
-//					System.out.println("TopCard : "+topCard.getRank()+" "+topCard.getSuit());
 					if(topCard.getRank()==Rank.EIGHT && play2.myCards.size()!=0) 
 						decSuit=play2.declareSuit();
 					break;
 				}
 			}
 			if(play2.myCards.size()==0){
-//				System.out.println("================================================");
 				logger.log(Level.INFO,"Player2 emptied");
-//				System.out.println("Player2 emptied");
 				point2=play1.getScore(point1);
 				if(point1<200 && point2 <200) {
 					deck=Card.getDeck();
@@ -95,25 +82,20 @@ public class GamePlay {
 			for(i=0;i<4 && point2<200;i++) {
 				if(play1.shouldDrawCard(topCard, decSuit)) {
 					if(deck.size()!=0 && i<3) {
-						//System.out.println("================================================");
 						play1.receiveCard(deck.get(0));	
 						deck.remove(0);
 					}
 				}
 				else {
 					topCard=play1.playCard();
-//					System.out.println("================================================");
 					logger.log(Level.INFO,"TopCard : "+topCard.getRank()+" "+topCard.getSuit());
-//					System.out.println("TopCard : "+topCard.getRank()+" "+topCard.getSuit());
 					if(topCard.getRank().equals(Rank.EIGHT) && play1.myCards.size()!=0) 
 						decSuit=play1.declareSuit();
 					break;
 				}
 			}
 			if(play1.myCards.size()==0){
-//				System.out.println("================================================");
 				logger.log(Level.INFO,"Player1 emptied");
-//				System.out.println("Player1 emptied");
 				point1=play2.getScore(point2);
 				if(point1<200 && point2 <200) {
 					deck=Card.getDeck();
@@ -123,9 +105,7 @@ public class GamePlay {
 				
 			}
 			if(deck.size()==0 && point1<200 && point2 <200) {
-//				System.out.println("================================================");
 				logger.log(Level.INFO,"Deck emptied and reshuffled");
-//				System.out.println("Deck emptied and reshuffled");
 				deck=Card.getDeck();
 				Collections.shuffle(deck);
 				ob.start();
@@ -138,18 +118,11 @@ public class GamePlay {
 	 * @param p1 @param p2 are the points of the player 1 and player 2;
 	 */
 	void results(int p1,int p2) {
-//		System.out.println("================================================");
 		logger.log(Level.INFO,"Player1 :"+p1);
-//		System.out.println("player1 :"+p1);
 		logger.log(Level.INFO,"Player2 :"+p2);
-//		System.out.println("player2 :"+p2);
-//		System.out.println("================================================");
 		if(p1>=200)
 			logger.log(Level.INFO,"Player1 wins");
-//			System.out.println("player1 wins");
 		else if(p2>=200)
 			logger.log(Level.INFO,"Player2 wins");
-//			System.out.println("player2 wins");
-//		System.out.println("================================================");
 	}
 }
