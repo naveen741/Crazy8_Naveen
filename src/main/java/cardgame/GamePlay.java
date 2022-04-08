@@ -12,6 +12,7 @@ public class GamePlay {
 	Card topCard;
 	Logger logger=Logger.getLogger(GamePlay.class.getName());
 	int point1=0,point2=0;
+	Suit decSuit;
 	/**
 	 * start function for start and restart the game
 	 * @param deck passing the deck for pass the Cards to the player 
@@ -86,6 +87,7 @@ public class GamePlay {
 		results(point1,point2);
 	}
 	void player1Move() {
+		int i;
 		for(i=0;i<4 && point2<200;i++) {
 			if(play1.shouldDrawCard(topCard, decSuit)) {
 				if(!deck.isEmpty() && i<3) {
