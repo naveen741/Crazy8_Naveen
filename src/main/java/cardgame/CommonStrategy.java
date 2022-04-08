@@ -2,6 +2,7 @@ package cardgame;
 
 import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CommonStrategy {
 	int playerId;
@@ -48,12 +49,22 @@ public class CommonStrategy {
 		}
 		return true;
 	}
-	
-	public int getScore(int point) {
+	public Card isEight() {
+		Card ans=null;
 		for(int i=0;i<myCards.size();i++) {
-			if(point<200)
-				point+=myCards.get(i).getPointValue();
+			if(myCards.get(i).getRank().equals(Card.Rank.EIGHT)) {
+				ans=myCards.get(i);
+				break;
+			}
 		}
-		return point;
+		return ans;
 	}
+	
+	 public int getScore(int point) {
+			for(int i=0;i<myCards.size();i++) {
+				if(point<200)
+					point+=myCards.get(i).getPointValue();
+			}
+			return point;
+		}
 }
