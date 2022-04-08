@@ -64,13 +64,5 @@ public class Player1 extends CommonStrategy implements PlayerStrategy{
 	}
 	void printPlayed(int i) {
 		logger1.log(Level.INFO,"Player1 played: {0}",myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
-	}
-	@Override
-	 public int getScore(int point) {
-		for(int i=0;i<myCards.size();i++) {
-			if(point<200)
-				point+=myCards.get(i).getPointValue();
-		}
-		return point;
 	}			
 }
