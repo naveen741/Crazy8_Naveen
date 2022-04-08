@@ -12,10 +12,7 @@ public class Player1 implements PlayerStrategy{
 	Card.Suit changedSuit;
 	Card outCard=null;
 	Logger logger=Logger.getLogger(Player1.class.getName());
-	public void init(int playerId, List<Integer> opponentIds) {
-		this.playerId=playerId;
-		this.opponentIds=opponentIds;
-	}
+	
 	public void receiveInitialCards(List<Card> cards) {
 		this.myCards=cards;
 	}
