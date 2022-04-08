@@ -20,7 +20,26 @@ public class Player1 extends CommonStrategy implements PlayerStrategy{
 		
 	}
 	public Card play() {
-		outCard=null;
+		int i;
+		if(changedSuit==null) {
+			for( i=myCards.size()-1;i>=0;i--) {
+				if(myCards.get(i).getSuit().equals(topPileCard.getSuit()) || myCards.get(i).getRank().equals(topPileCard.getRank())) {
+					break;
+				}
+			}
+		}
+		else {
+			
+			for(i=myCards.size()-1;i>=0;i--) {
+				if(myCards.get(i).getSuit().equals(changedSuit)) {
+					break;
+				}
+			}
+			changedSuit=null;
+		}
+		outCard=myCards.get(i);
+		printPlayed(outCard);
+		myCards.remove(outCard);
 		return outCard;
 	}
 	public Card.Suit declareSuit(){
