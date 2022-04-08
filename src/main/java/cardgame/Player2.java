@@ -22,27 +22,26 @@ public class Player2 extends CommonStrategy implements PlayerStrategy{
 		
 	}
 	public Card play() {
-		if(changedSuit==null) {		
-			for(int i=0;i<myCards.size();i++) {
+		if(changedSuit==null) {
+			for(int i=myCards.size()-1;i>=0;i--) {
 				if(myCards.get(i).getSuit().equals(topPileCard.getSuit()) || myCards.get(i).getRank().equals(topPileCard.getRank())) {
 					outCard=myCards.get(i);
-					printPlayed(outCard);
-					myCards.remove(i);
 					break;
 				}
 			}
 		}
 		else {
-			for(int i=0;i<myCards.size();i++) {
+			
+			for(int i=myCards.size()-1;i>=0;i--) {
 				if(myCards.get(i).getSuit().equals(changedSuit)) {
 					outCard=myCards.get(i);
-					printPlayed(outCard);
-					myCards.remove(i);
 					break;
 				}
 			}
 			changedSuit=null;
 		}
+		printPlayed(outCard);
+		myCards.remove(outCard);
 		return outCard;
 	}
 	public Card.Suit declareSuit(){
