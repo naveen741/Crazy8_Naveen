@@ -40,6 +40,7 @@ public class Player2 implements PlayerStrategy{
 					return false;
 				}
 			}
+			changedSuit=null;
 		}
 		return true;
 		
