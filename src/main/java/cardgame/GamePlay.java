@@ -11,6 +11,7 @@ public class GamePlay {
 	List<Card> deck=new ArrayList<>();
 	Card topCard;
 	Logger logger=Logger.getLogger(GamePlay.class.getName());
+	int point1=0,point2=0;
 	/**
 	 * start function for start and restart the game
 	 * @param deck passing the deck for pass the Cards to the player 
