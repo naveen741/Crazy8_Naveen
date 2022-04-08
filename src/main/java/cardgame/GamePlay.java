@@ -45,7 +45,7 @@ public class GamePlay {
 		play2.receiveInitialCards(player2);
 		topCard=deck.get(0);
 		deck.remove(0);
-		logger.log(Level.INFO,"TopCard : {0}",topCard.getRank()+" "+topCard.getSuit());
+		printTop();
 	}
 	/**
 	 * Play function for play the Crazy 8's and get points
@@ -94,7 +94,7 @@ public class GamePlay {
 			}
 			else {
 				topCard=play1.playCard();
-				logger.log(Level.INFO,"TopCard : {0}",topCard.getRank()+" "+topCard.getSuit());
+				printTop();
 				if(topCard.getRank().equals(Rank.EIGHT) && !play1.myCards.isEmpty()) 
 					decSuit=play1.declareSuit();
 				break;
@@ -112,7 +112,7 @@ public class GamePlay {
 			}
 			else {
 				topCard=play2.playCard();
-				logger.log(Level.INFO,"TopCard : {0}",topCard.getRank()+" "+topCard.getSuit());
+				printTop();
 				if(topCard.getRank()==Rank.EIGHT && !play2.myCards.isEmpty()) 
 					decSuit=play2.declareSuit();
 				break;
@@ -120,6 +120,9 @@ public class GamePlay {
 		}
 		
 		
+	}
+	void printTop() {
+		logger.log(Level.INFO,"TopCard : {0}",topCard.getRank()+" "+topCard.getSuit());
 	}
 	/**
 	 * results function for show the results in console
