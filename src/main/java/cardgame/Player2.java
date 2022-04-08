@@ -24,7 +24,7 @@ public class Player2 extends CommonStrategy implements PlayerStrategy{
 		if(changedSuit==null) {
 			for(int i=myCards.size()-1;i>=0;i--) {
 				if(myCards.get(i).getSuit().equals(topPileCard.getSuit()) || myCards.get(i).getRank().equals(topPileCard.getRank())) {
-					outCard=myCards.get(i);
+					
 					break;
 				}
 			}
@@ -33,12 +33,12 @@ public class Player2 extends CommonStrategy implements PlayerStrategy{
 			
 			for(int i=myCards.size()-1;i>=0;i--) {
 				if(myCards.get(i).getSuit().equals(changedSuit)) {
-					outCard=myCards.get(i);
 					break;
 				}
 			}
 			changedSuit=null;
 		}
+		outCard=myCards.get(i);
 		printPlayed(outCard);
 		myCards.remove(outCard);
 		return outCard;
