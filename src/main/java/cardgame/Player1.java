@@ -57,9 +57,9 @@ public class Player1 implements PlayerStrategy{
 		for(int i=0;i<myCards.size();i++) {
 			if(myCards.get(i).getRank().equals(Card.Rank.EIGHT)) {
 				outCard=myCards.get(i);
-				logger.log(Level.INFO,"Player1 played: {0}",myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
+				printPlayed(i);
 				myCards.remove(i);
-				
+				i--;
 				return outCard;
 			}
 		}
@@ -70,7 +70,7 @@ public class Player1 implements PlayerStrategy{
 		if(changedSuit==null) {
 			for(int i=0;i<myCards.size();i++) {
 				if(myCards.get(i).getSuit().equals(topPileCard.getSuit()) || myCards.get(i).getRank().equals(topPileCard.getRank())) {
-					logger.log(Level.INFO,"Player1 played: {0}",myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
+					printPlayed(i);
 					outCard=myCards.get(i);
 					myCards.remove(i);
 					break;
@@ -81,7 +81,7 @@ public class Player1 implements PlayerStrategy{
 			
 			for(int i=0;i<myCards.size();i++) {
 				if(myCards.get(i).getSuit().equals(changedSuit)) {
-					logger.log(Level.INFO,"Player1 played: {0}",myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
+					printPlayed(i);
 					outCard=myCards.get(i);
 					myCards.remove(i);
 					changedSuit=null;
@@ -110,6 +110,9 @@ public class Player1 implements PlayerStrategy{
 		logger.log(Level.INFO,"Delcare suit: {0}",declareSuit);
 		return declareSuit;
 		
+	}
+	void printPlayed(int i) {
+		logger.log(Level.INFO,"Player1 played: {0}",myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
 	}
 	@Override
 	 public int getScore(int point) {
