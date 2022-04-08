@@ -60,5 +60,7 @@ public class Player1 extends CommonStrategy implements PlayerStrategy{
 		return declareSuit;
 		
 	}
-				
+	void printPlayed(Card outCard) {
+		logger1.log(Level.INFO,"Player1 played: {0}",outCard.getRank()+" "+outCard.getSuit());
+	}			
 }
