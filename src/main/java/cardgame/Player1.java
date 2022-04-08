@@ -10,7 +10,7 @@ public class Player1 implements PlayerStrategy{
 	List<Card> myCards;
 	Card topPileCard;
 	Card.Suit changedSuit;
-	Logger logger=Logger.getLogger(GamePlay.class.getName());
+	Logger logger=Logger.getLogger(Player1.class.getName());
 	public void init(int playerId, List<Integer> opponentIds) {
 		this.playerId=playerId;
 		this.opponentIds=opponentIds;
