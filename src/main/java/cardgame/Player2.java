@@ -11,11 +11,17 @@ public class Player2 extends CommonStrategy implements PlayerStrategy{
 	
 	public Card playCard() {
 		outCard=isEight();
-		return playTwo();
+		if(outCard==null)
+			return play();
+		else {
+			printPlayed(outCard);
+			myCards.remove(outCard);
+			return outCard;
+		}
 		
 	}
-	public Card playTwo() {
-		if(changedSuit==null && outCard==null) {
+	public Card play() {
+		if(changedSuit==null) {
 			for(int i=myCards.size()-1;i>=0;i--) {
 				if(myCards.get(i).getSuit().equals(topPileCard.getSuit()) || myCards.get(i).getRank().equals(topPileCard.getRank())) {
 					outCard=myCards.get(i);
@@ -23,7 +29,7 @@ public class Player2 extends CommonStrategy implements PlayerStrategy{
 				}
 			}
 		}
-		else if(outCard== null){
+		else {
 			
 			for(int i=myCards.size()-1;i>=0;i--) {
 				if(myCards.get(i).getSuit().equals(changedSuit)) {
