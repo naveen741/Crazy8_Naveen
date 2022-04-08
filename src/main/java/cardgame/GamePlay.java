@@ -106,6 +106,7 @@ public class GamePlay {
 		
 	}
 	void player2Move() {
+		int i;
 		for(i=0;i<4;i++) {
 			if(play2.shouldDrawCard(topCard, decSuit)) {
 				if(!deck.isEmpty() && i<3) {
