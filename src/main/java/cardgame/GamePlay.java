@@ -55,20 +55,20 @@ public class GamePlay {
 	void play() {
 		while(point1<200 && point2<200) {	
 			player2Move();
-			if(play2.myCards.size()==0){
+			if(play2.myCards.isEmpty()){
 				logger.log(Level.INFO,"Player2 emptied");
 				point2=play1.getScore(point1);
-				if(point1<200 && point2 <200) {
+				if(point2 <200) {
 					deck=Card.getDeck();
 					Collections.shuffle(deck);
 					start();
 				}
 			}
 			player1Move();
-			if(play1.myCards.size()==0){
+			if(play1.myCards.isEmpty()){
 				logger.log(Level.INFO,"Player1 emptied");
 				point1=play2.getScore(point2);
-				if(point1<200 && point2 <200) {
+				if(point1<200) {
 					deck=Card.getDeck();
 					Collections.shuffle(deck);
 					start();
