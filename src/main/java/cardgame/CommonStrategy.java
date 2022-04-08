@@ -53,4 +53,11 @@ public class CommonStrategy {
 		logger.log(Level.INFO,"Player2 recieved : {0}",drawnCard.getRank()+" "+drawnCard.getSuit());
 		myCards.add(drawnCard);
 	}
+	public int getScore(int point) {
+		for(int i=0;i<myCards.size();i++) {
+			if(point<200)
+				point+=myCards.get(i).getPointValue();
+		}
+		return point;
+	}
 }
