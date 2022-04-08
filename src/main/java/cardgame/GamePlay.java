@@ -45,7 +45,7 @@ public class GamePlay {
 		play2.receiveInitialCards(player2);
 		topCard=deck.get(0);
 		deck.remove(0);
-		logger.log(Level.INFO,"TopCard : "+topCard.getRank()+" "+topCard.getSuit());
+		logger.log(Level.INFO,"TopCard : {0}",topCard.getRank()+" "+topCard.getSuit());
 	}
 	/**
 	 * Play function for play the Crazy 8's and get points
@@ -66,7 +66,7 @@ public class GamePlay {
 				}
 				else {
 					topCard=play2.playCard();
-					logger.log(Level.INFO,"TopCard : "+topCard.getRank()+" "+topCard.getSuit());
+					logger.log(Level.INFO,"TopCard : {0}",topCard.getRank()+" "+topCard.getSuit());
 					if(topCard.getRank()==Rank.EIGHT && play2.myCards.size()!=0) 
 						decSuit=play2.declareSuit();
 					break;
@@ -90,7 +90,7 @@ public class GamePlay {
 				}
 				else {
 					topCard=play1.playCard();
-					logger.log(Level.INFO,"TopCard : "+topCard.getRank()+" "+topCard.getSuit());
+					logger.log(Level.INFO,"TopCard : {0}",topCard.getRank()+" "+topCard.getSuit());
 					if(topCard.getRank().equals(Rank.EIGHT) && play1.myCards.size()!=0) 
 						decSuit=play1.declareSuit();
 					break;
@@ -120,8 +120,8 @@ public class GamePlay {
 	 * @param p1 @param p2 are the points of the player 1 and player 2;
 	 */
 	void results(int p1,int p2) {
-		logger.log(Level.INFO,"Player1 :"+p1);
-		logger.log(Level.INFO,"Player2 :"+p2);
+		logger.log(Level.INFO,"Player1 : {0}",p1);
+		logger.log(Level.INFO,"Player2 : {0}",p2);
 		if(p1>=200)
 			logger.log(Level.INFO,"Player1 wins");
 		else if(p2>=200)
