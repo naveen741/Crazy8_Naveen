@@ -34,11 +34,11 @@ public class GamePlay {
 		String temp="";
 		for(i=0;i<player1.size();i++)
 			temp+=(i+1)+" "+player1.get(i).getRank()+" "+player1.get(i).getSuit()+" ";
-		logger.log(Level.INFO,"Player1 Cards : "+temp);
+		logger.log(Level.INFO,"Player1 Cards : {0}",temp);
 		temp="";
 		for(i=0;i<player2.size();i++)
 			temp+=(i+1)+" "+player2.get(i).getRank()+" "+player2.get(i).getSuit()+" ";
-		logger.log(Level.INFO,"Player2 Cards : "+temp);
+		logger.log(Level.INFO,"Player2 Cards : {0}",temp);
 		play1.receiveInitialCards(player1);
 		play2.receiveInitialCards(player2);
 		topCard=deck.get(0);
