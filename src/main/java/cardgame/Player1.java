@@ -4,22 +4,31 @@ import java.util.logging.Logger;
 
 public class Player1 extends CommonStrategy implements PlayerStrategy{
 	Logger logger1=Logger.getLogger(Player1.class.getName());
+	public void receiveCard(Card drawnCard) {
+		logger.log(Level.INFO,"Player1 recieved : {0}",drawnCard.getRank()+" "+drawnCard.getSuit());
+		myCards.add(drawnCard);
+	}
 	public Card playCard() {
-		
+		outCard=null;
 		for(int i=0;i<myCards.size();i++) {
 			if(myCards.get(i).getRank().equals(Card.Rank.EIGHT)) {
 				outCard=myCards.get(i);
 				printPlayed(i);
-				myCards.remove(i--);
-				return outCard;
+				myCards.remove(i);
+				break;
 			}
 		}
-		return play();
+		if(outCard==null)
+			return play();
+		else {
+			
+			return outCard;
+		}
 		
 	}
 	public Card play() {
 		if(changedSuit==null) {
-			for(int i=0;i<myCards.size();i++) {
+			for(int i=myCards.size()-1;i>=0;i--) {
 				if(myCards.get(i).getSuit().equals(topPileCard.getSuit()) || myCards.get(i).getRank().equals(topPileCard.getRank())) {
 					printPlayed(i);
 					outCard=myCards.get(i);
@@ -30,7 +39,7 @@ public class Player1 extends CommonStrategy implements PlayerStrategy{
 		}
 		else {
 			
-			for(int i=0;i<myCards.size();i++) {
+			for(int i=myCards.size()-1;i>=0;i--) {
 				if(myCards.get(i).getSuit().equals(changedSuit)) {
 					printPlayed(i);
 					outCard=myCards.get(i);
