@@ -23,10 +23,14 @@ public class Player2 implements PlayerStrategy{
 		this.topPileCard=topPileCard;
 		this.changedSuit=changedSuit;
 		for(int i=0;i<myCards.size();i++) {
-			if(myCards.get(i).getRank().equals(Card.Rank.EIGHT)) {					
+			if(myCards.get(i).getRank().equals(Card.Rank.EIGHT)) {
 				return false;
 			}
 		}
+		return check();
+		
+	}
+	public boolean check() {
 		if(changedSuit==null) {
 			for(int i=0;i<myCards.size();i++) {
 				if(myCards.get(i).getSuit().equals(topPileCard.getSuit()) || myCards.get(i).getRank().equals(topPileCard.getRank())) {
@@ -40,10 +44,9 @@ public class Player2 implements PlayerStrategy{
 					return false;
 				}
 			}
-			changedSuit=null;
+			
 		}
 		return true;
-		
 	}
 	public void receiveCard(Card drawnCard) {
 		logger.log(Level.INFO,"Player2 recieved :"+drawnCard.getRank()+" "+drawnCard.getSuit());
