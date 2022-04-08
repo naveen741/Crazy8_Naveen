@@ -31,13 +31,15 @@ public class GamePlay {
 				player1.add(deck.get(0));
 			deck.remove(0);			
 		}
-		String temp="";
+		StringBuilder str1=new StringBuilder();
 		for(i=0;i<player1.size();i++)
-			temp+=(i+1)+" "+player1.get(i).getRank()+" "+player1.get(i).getSuit()+" ";
+			str1.append((i+1)+" "+player1.get(i).getRank()+" "+player1.get(i).getSuit()+" ");
+		String temp=str1.toString();
 		logger.log(Level.INFO,"Player1 Cards : {0}",temp);
-		temp="";
+		StringBuilder str2=new StringBuilder();
 		for(i=0;i<player2.size();i++)
-			temp+=(i+1)+" "+player2.get(i).getRank()+" "+player2.get(i).getSuit()+" ";
+			str2.append((i+1)+" "+player2.get(i).getRank()+" "+player2.get(i).getSuit()+" ");
+		temp=str2.toString();
 		logger.log(Level.INFO,"Player2 Cards : {0}",temp);
 		play1.receiveInitialCards(player1);
 		play2.receiveInitialCards(player2);
