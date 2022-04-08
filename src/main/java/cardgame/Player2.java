@@ -1,6 +1,8 @@
 package cardgame;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Player2 implements PlayerStrategy{
 	int playerId;
@@ -8,6 +10,7 @@ public class Player2 implements PlayerStrategy{
 	List<Card> myCards;
 	Card topPileCard;
 	Card.Suit changedSuit;
+	Logger logger=Logger.getLogger(GamePlay.class.getName());
 	public void init(int playerId, List<Integer> opponentIds) {
 		this.playerId=playerId;
 		this.opponentIds=opponentIds;
@@ -42,16 +45,15 @@ public class Player2 implements PlayerStrategy{
 		
 	}
 	public void receiveCard(Card drawnCard) {
-		System.out.println("Player2 recieved :"+drawnCard.getRank()+" "+drawnCard.getSuit());
+		logger.log(Level.INFO,"Player2 recieved :"+drawnCard.getRank()+" "+drawnCard.getSuit());
 		myCards.add(drawnCard);
 	}
 	public Card playCard() {
-		System.out.println("================================================");
 		Card outCard=null;
 		for(int i=0;i<myCards.size();i++) {
 			if(myCards.get(i).getRank().equals(Card.Rank.EIGHT)) {
 				outCard=myCards.get(i);
-				System.out.println("Player2 played: "+myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
+				logger.log(Level.INFO,"Player2 played: "+myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
 				myCards.remove(i);
 				
 				return outCard;
@@ -61,7 +63,7 @@ public class Player2 implements PlayerStrategy{
 			
 			for(int i=0;i<myCards.size();i++) {
 				if(myCards.get(i).getSuit().equals(topPileCard.getSuit()) || myCards.get(i).getRank().equals(topPileCard.getRank())) {
-					System.out.println("Player2 played: "+myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
+					logger.log(Level.INFO,"Player2 played: "+myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
 					outCard=myCards.get(i);
 					myCards.remove(i);
 					break;
@@ -71,7 +73,7 @@ public class Player2 implements PlayerStrategy{
 		else {
 			for(int i=0;i<myCards.size();i++) {
 				if(myCards.get(i).getSuit().equals(changedSuit)) {
-					System.out.println("Player2 played: "+myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
+					logger.log(Level.INFO,"Player2 played: "+myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
 					outCard=myCards.get(i);
 					myCards.remove(i);
 					break;
@@ -82,8 +84,7 @@ public class Player2 implements PlayerStrategy{
 		
 	}
 	public Card.Suit declareSuit(){
-		System.out.println("================================================");
-		Card Dsiut=myCards.get(0);
+		Card.Suit Dsuit=myCards.get(0).getSuit();
 		int max=52,count=0;
 		for(int i=0;i<myCards.size();i++) {
 			count=0;
@@ -91,13 +92,13 @@ public class Player2 implements PlayerStrategy{
 				if(myCards.get(i)==myCards.get(j))
 					count++;
 			}
-			if(count<max) {
+			if(count<max && Dsuit != topPileCard.getSuit()) {
 				max=count;
-				Dsiut=myCards.get(i);
+				Dsuit=myCards.get(i).getSuit();
 			}
 		}
-		System.out.println("Delcare suit: "+Dsiut.getSuit());
-		return Dsiut.getSuit();
+		logger.log(Level.INFO,"Delcare suit: "+Dsuit);
+		return Dsuit;
 		
 	}
 	public void processOpponentActions(List<PlayerTurn> opponentActions) {
