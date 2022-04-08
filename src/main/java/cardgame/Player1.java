@@ -8,12 +8,12 @@ public class Player1 extends CommonStrategy implements PlayerStrategy{
 		logger.log(Level.INFO,"Player1 recieved : {0}",drawnCard.getRank()+" "+drawnCard.getSuit());
 		myCards.add(drawnCard);
 	}
-public Card playCard() {
+	public Card playCard() {
 		outCard=isEight();
-		return play();
-		
+		return playOne();
+
 	}
-	public Card play() {
+	public Card playOne() {
 		if(changedSuit==null && outCard==null) {
 			for(int i=myCards.size()-1;i>=0;i--) {
 				if(myCards.get(i).getSuit().equals(topPileCard.getSuit()) || myCards.get(i).getRank().equals(topPileCard.getRank())) {
@@ -23,7 +23,7 @@ public Card playCard() {
 			}
 		}
 		else if(outCard== null){
-			
+
 			for(int i=myCards.size()-1;i>=0;i--) {
 				if(myCards.get(i).getSuit().equals(changedSuit)) {
 					outCard=myCards.get(i);
@@ -52,7 +52,7 @@ public Card playCard() {
 		}
 		logger1.log(Level.INFO,"Delcare suit: {0}",declareSuit);
 		return declareSuit;
-		
+
 	}
 	void printPlayed(Card outCard) {
 		logger1.log(Level.INFO,"Player1 played: {0}",outCard.getRank()+" "+outCard.getSuit());
