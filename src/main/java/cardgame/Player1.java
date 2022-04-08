@@ -9,7 +9,6 @@ public class Player1 extends CommonStrategy implements PlayerStrategy{
 		myCards.add(drawnCard);
 	}
 	public Card playCard() {
-		outCard=null;
 		outCard=isEight();
 		if(outCard==null)
 			return play();
