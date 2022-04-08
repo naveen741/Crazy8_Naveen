@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 public class Player2 extends CommonStrategy implements PlayerStrategy{
 	Logger logger2=Logger.getLogger(Player2.class.getName());
 	public void receiveCard(Card drawnCard) {
-		logger.log(Level.INFO,"Player2 recieved : {0}",drawnCard.getRank()+" "+drawnCard.getSuit());
+		logger2.log(Level.INFO,"Player2 recieved : {0}",drawnCard.getRank()+" "+drawnCard.getSuit());
 		myCards.add(drawnCard);
 	}
 	
