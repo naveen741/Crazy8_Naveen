@@ -10,9 +10,8 @@ public class Player1 extends CommonStrategy implements PlayerStrategy{
 			if(myCards.get(i).getRank().equals(Card.Rank.EIGHT)) {
 				outCard=myCards.get(i);
 				printPlayed(i);
-				myCards.remove(i);
+				myCards.remove(i--);
 				return outCard;
-				break;
 			}
 		}
 		return play();
