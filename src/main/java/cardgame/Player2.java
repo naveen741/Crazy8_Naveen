@@ -3,15 +3,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Player2 extends CommonStrategy implements PlayerStrategy{
-	Logger logger=Logger.getLogger(Player2.class.getName());
+	Logger logger2=Logger.getLogger(Player2.class.getName());
 	public Card playCard() {
 		for(int i=0;i<myCards.size();i++) {
 			if(myCards.get(i).getRank().equals(Card.Rank.EIGHT)) {
 				outCard=myCards.get(i);
 				printPlayed(i);
 				myCards.remove(i);
-				i--;
 				return outCard;
+				break;
 			}
 		}
 		return play();
@@ -56,12 +56,12 @@ public class Player2 extends CommonStrategy implements PlayerStrategy{
 				declareSuit=myCards.get(i).getSuit();
 			}
 		}
-		logger.log(Level.INFO,"Delcare suit: {0}",declareSuit);
+		logger2.log(Level.INFO,"Delcare suit: {0}",declareSuit);
 		return declareSuit;
 		
 	}
 	void printPlayed(int i) {
-		logger.log(Level.INFO,"Player2 played: {0}",myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
+		logger2.log(Level.INFO,"Player2 played: {0}",myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
 	}
 	 @Override
 	 public int getScore(int point) {
