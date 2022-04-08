@@ -17,12 +17,14 @@ public class Player2 implements PlayerStrategy{
 		this.opponentIds=opponentIds;
 	}
 	public void receiveInitialCards(List<Card> cards) {
+		logger.log(Level.INFO,"Player2 recieved the initial cards");
 		this.myCards=cards;
 			
 	}
 	public boolean shouldDrawCard(Card topPileCard, Card.Suit changedSuit) {
 		this.topPileCard=topPileCard;
 		this.changedSuit=changedSuit;
+		logger.log(Level.INFO,"Player2 thinking for next move");
 		for(int i=0;i<myCards.size();i++) {
 			if(myCards.get(i).getRank().equals(Card.Rank.EIGHT)) {
 				return false;
