@@ -59,8 +59,8 @@ public class Player1 implements PlayerStrategy{
 				outCard=myCards.get(i);
 				printPlayed(i);
 				myCards.remove(i);
-				i--;
 				return outCard;
+				break;
 			}
 		}
 		return play();
