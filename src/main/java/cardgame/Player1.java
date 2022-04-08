@@ -8,17 +8,7 @@ public class Player1 extends CommonStrategy implements PlayerStrategy{
 		logger.log(Level.INFO,"Player1 recieved : {0}",drawnCard.getRank()+" "+drawnCard.getSuit());
 		myCards.add(drawnCard);
 	}
-	public Card playCard() {
-		outCard=isEight();
-		if(outCard==null)
-			return play();
-		else {
-			printPlayed(outCard);
-			myCards.remove(outCard);
-			return outCard;
-		}
-		
-	}
+	
 	public Card play() {
 		int i;
 		if(changedSuit==null) {
