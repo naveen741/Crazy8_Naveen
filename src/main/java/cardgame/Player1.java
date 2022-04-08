@@ -10,18 +10,12 @@ public class Player1 extends CommonStrategy implements PlayerStrategy{
 	}
 	public Card playCard() {
 		outCard=null;
-		for(int i=0;i<myCards.size();i++) {
-			if(myCards.get(i).getRank().equals(Card.Rank.EIGHT)) {
-				outCard=myCards.get(i);
-				printPlayed(i);
-				myCards.remove(i);
-				break;
-			}
-		}
+		outCard=isEight();
 		if(outCard==null)
 			return play();
 		else {
-			
+			printPlayed(outCard);
+			myCards.remove(outCard);
 			return outCard;
 		}
 		
@@ -30,8 +24,8 @@ public class Player1 extends CommonStrategy implements PlayerStrategy{
 		if(changedSuit==null) {
 			for(int i=myCards.size()-1;i>=0;i--) {
 				if(myCards.get(i).getSuit().equals(topPileCard.getSuit()) || myCards.get(i).getRank().equals(topPileCard.getRank())) {
-					printPlayed(i);
 					outCard=myCards.get(i);
+					printPlayed(outCard);
 					myCards.remove(i);
 					break;
 				}
@@ -41,8 +35,8 @@ public class Player1 extends CommonStrategy implements PlayerStrategy{
 			
 			for(int i=myCards.size()-1;i>=0;i--) {
 				if(myCards.get(i).getSuit().equals(changedSuit)) {
-					printPlayed(i);
 					outCard=myCards.get(i);
+					printPlayed(outCard);
 					myCards.remove(i);
 					changedSuit=null;
 					break;
@@ -71,7 +65,7 @@ public class Player1 extends CommonStrategy implements PlayerStrategy{
 		return declareSuit;
 		
 	}
-	void printPlayed(int i) {
-		logger1.log(Level.INFO,"Player1 played: {0}",myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
+	void printPlayed(Card outCard) {
+		logger1.log(Level.INFO,"Player1 played: {0}",outCard.getRank()+" "+outCard.getSuit());
 	}			
 }
