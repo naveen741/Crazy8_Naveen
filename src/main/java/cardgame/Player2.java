@@ -4,16 +4,26 @@ import java.util.logging.Logger;
 
 public class Player2 extends CommonStrategy implements PlayerStrategy{
 	Logger logger2=Logger.getLogger(Player2.class.getName());
+	public void receiveCard(Card drawnCard) {
+		logger.log(Level.INFO,"Player2 recieved : {0}",drawnCard.getRank()+" "+drawnCard.getSuit());
+		myCards.add(drawnCard);
+	}
 	public Card playCard() {
+		outCard=null;
 		for(int i=0;i<myCards.size();i++) {
 			if(myCards.get(i).getRank().equals(Card.Rank.EIGHT)) {
 				outCard=myCards.get(i);
 				printPlayed(i);
-				myCards.remove(i--);
-				return outCard;
+				myCards.remove(i);
+				break;
 			}
 		}
-		return play();
+		if(outCard==null)
+			return play();
+		else {
+			
+			return outCard;
+		}
 		
 	}
 	public Card play() {
@@ -62,4 +72,5 @@ public class Player2 extends CommonStrategy implements PlayerStrategy{
 	void printPlayed(int i) {
 		logger2.log(Level.INFO,"Player2 played: {0}",myCards.get(i).getRank()+" "+myCards.get(i).getSuit());
 	}
+	
 }
