@@ -1,9 +1,5 @@
 package cardgame;
-
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 public class CommonStrategy {
 	int playerId;
 	List<Integer> opponentIds;
@@ -11,7 +7,6 @@ public class CommonStrategy {
 	Card topPileCard;
 	Card.Suit changedSuit;
 	Card outCard=null;
-	Logger logger=Logger.getLogger(CommonStrategy.class.getName());
 	public void init(int playerId, List<Integer> opponentIds) {
 		this.playerId=playerId;
 		this.opponentIds=opponentIds;
