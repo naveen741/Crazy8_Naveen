@@ -13,7 +13,7 @@ public class GamePlay {
 	Logger logger=Logger.getLogger(GamePlay.class.getName());
 	int point1=0;
 	int point2=0;
-	Suit decSuit;
+	Card.Suit decSuit;
 	/**
 	 * start function for start and restart the game
 	 * @param deck passing the deck for pass the Cards to the player 
